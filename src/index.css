@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #2b2438;
+  --color-ink-soft: #5b5268;
+
+  --color-brand-purple: #783faa;
+  --color-brand-purple-dark: #57307a;
+  --color-brand-purple-50: #f2ecf7;
+
+  --color-brand-blue: #46cef4;
+
+  --color-brand-yellow: #ffd004;
+  --color-brand-yellow-50: #fffae6;
+
+  --color-brand-pink: #ed196a;
+  --color-brand-pink-dark: #a31551;
+  --color-brand-pink-50: #fce9f1;
+
+  --color-brand-indigo: #4a73ce;
+  --color-brand-orange: #f8992f;
+  --color-brand-green: #63b858;
+
+  /* Poppins is loaded by the <link> in index.html. */
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Header is 68px. This is the only place anchor offset is set: adding
+   scroll-margin on the sections too would stack and overshoot. */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  color: var(--color-ink);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-brand-purple);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.brand-wash {
+  background: linear-gradient(135deg, #f2ecf7 0%, #ecfafe 50%, #fffae6 100%);
+}
+
+.block-grid {
+  background-image:
+    linear-gradient(to right, rgba(120, 63, 170, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(120, 63, 170, 0.07) 1px, transparent 1px);
+  background-size: 56px 56px;
+}

@@ -1,0 +1,26 @@
+# Compress text assets before sending them. The main bundle is 266 kB raw and
+# 80 kB gzipped, so on shared hosting this is the single biggest win available.
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# Vite fingerprints every asset filename (index-VBNFjIJC.js), so a changed file
+# is always a new URL and these can be cached for as long as we like.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# index.html is the one file whose name never changes, so it must not be
+# cached. Otherwise a visitor keeps loading the previous deploy's bundle.
+<IfModule mod_headers.c>
+  <FilesMatch "index\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>

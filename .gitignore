@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.vite/
+
+.env
+.env.local
+.env.*.local
+
+npm-debug.log*
+yarn-error.log*
+*.log
+
+.DS_Store
+Thumbs.db
+
+# Source artwork and brand kit. Not needed to build or run the site.
+brandkit*/
